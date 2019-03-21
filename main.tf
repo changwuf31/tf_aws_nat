@@ -38,10 +38,11 @@ data "template_file" "user_data" {
   }
 }
 
-resource "aws_instance" "nat" {
+resource "aws_spot_instance_request" "nat" {
   count                  = "${var.instance_count}"
   ami                    = "${data.aws_ami.ami.id}"
   instance_type          = "${var.instance_type}"
+  spot_price             = "${var.max_price}"
   source_dest_check      = false
   iam_instance_profile   = "${aws_iam_instance_profile.nat_profile.id}"
   key_name               = "${var.aws_key_name}"
