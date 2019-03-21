@@ -1,11 +1,11 @@
 output "private_ips" {
-  value = ["${aws_instance.nat.*.private_ip}"]
+  value = ["${aws_spot_instance_request.nat.*.private_ip}"]
 }
 
 output "public_ips" {
-  value = ["${aws_instance.nat.*.public_ip}"]
+  value = ["${aws_spot_instance_request.nat.*.public_ip}"]
 }
 
 output "instance_ids" {
-  value = ["${aws_instance.nat.*.id}"]
+  value = ["${aws_spot_instance_request.nat.*.id}"]
 }
